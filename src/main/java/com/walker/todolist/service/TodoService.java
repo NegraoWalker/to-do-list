@@ -22,4 +22,12 @@ public class TodoService {
     public List<Todo> findByAll(){
         return todoRepository.findAll();
     }
+    public Todo update(Long id, String newDescricao, String newNome, String newRealizado, String newPrioridade ){
+        Todo findTodo = findById(id);
+        findTodo.setDescricao(newDescricao);
+        findTodo.setNome(newNome);
+        findTodo.setRealizado(newRealizado);
+        findTodo.setPrioridade(newPrioridade);
+        return todoRepository.save(findTodo);
+    }
 }
