@@ -30,4 +30,10 @@ public class TodoService {
         findTodo.setPrioridade(newPrioridade);
         return todoRepository.save(findTodo);
     }
+
+    public void delete(Long id){
+        Todo findTodo = findById(id);
+        todoRepository.delete(findTodo);
+        System.out.println("DEBUG: FINALIZOU O MÉTODO DELETE DO SERVICE");
+    }
 }

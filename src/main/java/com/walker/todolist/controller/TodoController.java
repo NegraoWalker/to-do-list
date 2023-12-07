@@ -27,9 +27,13 @@ public class TodoController {
     public ResponseEntity<List<Todo>> findByAllToDo(){
         return ResponseEntity.status(HttpStatus.OK).body(todoService.findByAll());
     }
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Todo> updateToDo(@PathVariable Long id, @RequestBody Todo todo){
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(todoService.update(id,todo.getDescricao(),todo.getNome(),todo.getRealizado(),todo.getPrioridade()));
     }
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteToDo(@PathVariable Long id){
+        todoService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }
