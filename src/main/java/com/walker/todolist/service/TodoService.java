@@ -6,6 +6,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TodoService {
     @Autowired
@@ -16,5 +18,8 @@ public class TodoService {
     }
     public Todo findById(Long id){
         return todoRepository.findById(id).orElseThrow(()-> new EntityNotFoundException(String.format("Tarefa de id = [%s] não encontrada!")));
+    }
+    public List<Todo> findByAll(){
+        return todoRepository.findAll();
     }
 }
